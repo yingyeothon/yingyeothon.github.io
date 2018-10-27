@@ -1,0 +1,18 @@
+
+<div class="sidebar" id="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/"><img id="logo" src="/images/logo.png"></a></h1>
+    <span class="tagline"></span>
+  </div>
+  <div class="posts">
+    <ul class="posts-list">
+      {% for post in site.posts %}
+        <li class="post-link">
+          <a class="post-title" href="{{ post.url }}" title="{{ post.date | date_to_string }}">
+            {{ post.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

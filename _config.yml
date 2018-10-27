@@ -6,15 +6,15 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: YYT
-email: lactrious@gmail.com
+# title: YYT
+# email: 
 description: >
   잉여들이 모여서 진행하는 해커톤입니다.
   AWS serverless hackathon이 개최되지 않아 홧김에 열린 해커톤이라는
   느낌을 지울 수 없지만 그런건 이제 아무래도 상관 없습니다.
 baseurl: ""
-url: "https://yyt.life"
-twitter_username: yingyeothon
+url: "https://yingyeothon.github.io"
+# twitter_username: yingyeothon
 github_username:  yingyeothon
 
 # Build settings

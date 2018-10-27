@@ -1,0 +1,64 @@
+
+.sidebar,
+.post-content,
+.page-content {
+  vertical-align: top;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 50vh;
+}
+
+.sidebar {
+  float: left;
+  width: 14%;
+  max-width: 12rem;
+  padding-left: 11em;
+  padding-right: 2.125em;
+  border-right: 1px solid #e7e7e7;
+}
+
+#sidebar-button {
+  height: intrinsic;
+  cursor: pointer;
+  display: none;
+  padding: 15px 5px 0px 0px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+#sidebar-button:active,
+#sidebar-button:hover {
+  opacity: 0.7;
+}
+
+.posts {
+  border-top: 1px solid #e7e7e7;
+  margin-top: 1em;
+  padding-top: 1.5em;
+  padding-bottom: 1.25em;
+}
+
+.posts a {
+  color: #444;
+}
+
+.posts a:hover {
+  color: #777;
+}
+
+.posts-list {
+  list-style-type: none;
+}
+
+.posts-list li {
+  text-align: right;
+  line-height: 1.75em;
+}
+
+.posts .post-link,
+.posts .post-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}

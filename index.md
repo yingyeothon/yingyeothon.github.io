@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: YYT
 ---
 
 Yingyeo-thon으로 잉여들이 모여서 진행하는 해커톤입니다.
@@ -42,16 +42,3 @@ AWS serverless hackathon이 개최되지 않아 홧김에 열린 해커톤이라
 ## 다함께
 
 주전부리를 적당히 준비하고 적절하게 밥을 알아서 잘 먹습니다.
-
-# 이력
-
-## 1회, 2회
-
-AWS의 Serverless hackthon으로 진행되었습니다. 관련 내용은 다음 위치에서 확인 가능합니다.
-
-- [AWS-Lambda-Serverless-Turn-Game](http://hyunjong-lee.github.io/tech/2015/09/16/AWS-Lambda-Serverless-Turn-Game.html)
-- [Gaming-on-AWS-Hackathon-2nd](http://hyunjong-lee.github.io/tech/2016/09/25/Gaming-on-AWS-Hackathon-2nd.html)
-
-## 3회 이후
-
-[Archive](/archive)를 참고하세요.
