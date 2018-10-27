@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <p>
+      Yingyeo-thon으로 잉여들이 모여서 진행하는 해커톤입니다.
+      AWS serverless hackathon이 개최되지 않아 홧김에 열린 해커톤이라는 느낌을 지울 수 없지만 그런건 이제 아무래도 상관 없습니다.
+  </p>
+  <p>
+      *어디까지 가나 해봅시다.*
+  </p>
+
+  <h1 class="page-heading">Posts</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
