@@ -14,9 +14,14 @@
   float: left;
   width: 14%;
   max-width: 12rem;
-  padding-left: 11em;
+  padding-left: 5%;
   padding-right: 2.125em;
+  min-width: 9rem;
   border-right: 1px solid #e7e7e7;
+
+  @include media-query($on-laptop) {
+    display: none;
+  }
 }
 
 #sidebar-button {
@@ -61,4 +66,21 @@
 .posts .post-title {
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+.posts-footer {
+  display: none;
+  text-align: right;
+  padding: 0rem 1rem;
+
+  .post-link {
+    display: inline-block;
+    width: 9rem;
+    font-size: 1.2rem;
+    text-align: right;
+  }
+  
+  @include media-query($on-laptop) {
+    display: block;
+  }
 }
