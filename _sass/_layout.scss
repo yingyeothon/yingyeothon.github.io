@@ -1,3 +1,11 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+* {
+    font-family: NotoSansCJKkr, 'Noto Sans';
+}
+
 /**
  * Site header
  */
@@ -213,30 +221,44 @@
     }
 }
 
+hr {
+    height: 0px;
+    border: 2px solid #efefef;
+    margin: 2rem 0rem;
+}
+
 .post-content {
     margin-bottom: $spacing-unit;
 
-    h2 {
-        font-size: 32px;
+    h1 {
+        font-size: 27px;
 
         @include media-query($on-laptop) {
-            font-size: 28px;
+            font-size: 24px;
         }
     }
 
-    h3 {
-        font-size: 26px;
+    h2 {
+        font-size: 24px;
 
         @include media-query($on-laptop) {
             font-size: 22px;
         }
     }
 
-    h4 {
-        font-size: 20px;
+    h3 {
+        font-size: 21px;
 
         @include media-query($on-laptop) {
             font-size: 18px;
+        }
+    }
+
+    h4 {
+        font-size: 18px;
+
+        @include media-query($on-laptop) {
+            font-size: 16px;
         }
     }
 }
@@ -245,3 +267,33 @@
     margin-left: 0;
     margin-right: 0;
 }
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    padding: 0;
+    margin-bottom: 1rem;
+ }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0; }
+      table tr:nth-child(2n) {
+        background-color: #f8f8f8; }
+      table tr th {
+        font-weight: bold;
+        border: 1px solid #cccccc;
+        text-align: left;
+        margin: 0;
+        padding: 6px 13px; }
+      table tr td {
+        border: 1px solid #cccccc;
+        text-align: left;
+        margin: 0;
+        padding: 6px 13px; }
+      table tr th :first-child, table tr td :first-child {
+        margin-top: 0; }
+      table tr th :last-child, table tr td :last-child {
+        margin-bottom: 0; }
+  
