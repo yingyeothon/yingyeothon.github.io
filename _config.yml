@@ -11,3 +11,5 @@ github_username:  yingyeothon
 
 # Build settings
 markdown: kramdown
+
+exclude: ['Gemfile.lock', 'Gemfile', 'sync.sh']
