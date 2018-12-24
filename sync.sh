@@ -3,13 +3,6 @@
 SYNC_LOG="$(mktemp)"
 TARGET_PATHS_LOG="$(mktemp)"
 
-rm -rf _site/ && \
-  aws s3 sync s3://yyt.life _site/
-if [ $? -ne 0 ]; then
-  echo "Sync down is failed."
-  exit 1
-fi
-
 jekyll build --future
 if [ $? -ne 0 ]; then
   echo "Failed to build."
