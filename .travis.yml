@@ -1,0 +1,12 @@
+sudo: required
+language: bash
+services:
+  - docker
+before_install:
+  - docker pull lacti/jekyll-aws
+script:
+  - docker run -it -e AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} -v ${PWD}:/opt lacti/jekyll-aws /bin/bash -c "cd /opt; /bin/bash /opt/sync.sh"
+notifications:
+  slack:
+    secure: Hr3O2zoAolxU2YPvOB80XLhyJ9G5NsI8hFwlwfgeg+RZHqFcVdmO2gGiFpHeuEslLwVrdEw4kOs9Cjv3OTuJ7o57oz0xyJDxWAW/oTZsx1a4dRXsdlkdkThJZxegRMQ/m8up5WjNJT6ID1zBsp7Qgsr7KJXWcq04M6/uZPgfiz+N04kDRbqpCdUhK6kNGPbUtz1IQ1UWSPUHzA9sXzA4XkXgPQUQaDCqKZMehWjE9zUmK1tdxQekAHiojaCu1vhe0NT6m+H4Kl/4f6qk745v7EuQ5453xQbYv0qKIQCeHMrW72XBWxtDoWtW+vqqxbXpeymcVRvS0eWHTBgAUpmEiHtSq3nWvKZIr54L5LaAy2KpQ74VUX4xQj4RX8liD9CBiJ05bXg5NhfQCpVEko8UdzixlxqGijG1TBkryB6tMsO/CU1+QNpApncoNu9w/xUr2mKy7NUvSHniE3gAh8vRZDEvJCfpvTvlWZ1sMYUJ0HGZJGISZk5qSeo24qaO8oV7NKXjNrJ9ysFEIi2uuOiNW76vQ22TIQ0BZmVuvZJwVVqFJEIsl3pR5PL1akm7AsKdS5cbjNHg0DK8R4gXX+4hYxMvz8QifbOSHcSFUUanIyhhNWGpTbwVsu0eYxcpilUzzRFthrm5OAE8kwgbRp0vctWESJrVLOEwH5r64WE3/ag=
+
