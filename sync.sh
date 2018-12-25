@@ -22,7 +22,7 @@ cat "${SYNC_LOG}" \
   | cut -d"/" -f4- \
   | sed -e 's/^/\//' \
   | sort -u \
-  | grep -v "/KiB" \
+  | egrep "(.html|.css|.jpg|.png|.js)" \
   | tee "${TARGET_PATHS_LOG}"
 TARGET_PATHS="$(cat "${TARGET_PATHS_LOG}")"
 
@@ -31,16 +31,17 @@ DISTRIBUTION_ID="$(aws cloudfront list-distributions \
 )"
 if [ -z "${DISTRIBUTION_ID}" ]; then
   echo "Distribution id is empty."
-  exit 1;
+  exit 1
 fi
 
 aws cloudfront create-invalidation \
   --distribution-id "${DISTRIBUTION_ID}" \
   --paths ${TARGET_PATHS}
+
 if [ $? -ne 0 ]; then
   echo "Cache invalidation is failed."
   exit 1
-if
+fi
 
 rm -f "${SYNC_LOG}" "${TARGET_PATHS_LOG}"
 
