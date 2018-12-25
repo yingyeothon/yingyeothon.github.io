@@ -22,9 +22,12 @@ cat "${SYNC_LOG}" \
   | cut -d"/" -f4- \
   | sed -e 's/^/\//' \
   | sort -u \
-  | egrep "(.html|.css|.jpg|.png|.js)" \
+  | egrep "(.html|.css)" \
   | tee "${TARGET_PATHS_LOG}"
 TARGET_PATHS="$(cat "${TARGET_PATHS_LOG}")"
+
+# Do not invalidate image caches because they would not be changed in almost cases.
+# | egrep "(.html|.css|.jpg|.png|.js)" \
 
 DISTRIBUTION_ID="$(aws cloudfront list-distributions \
   | jq -r '.DistributionList.Items[] | select(.Aliases.Items[0]=="www.yyt.life") | .Id' \
