@@ -1,15 +1,15 @@
 # Site settings
 # title: YYT
-# email: 
+# email:
 description: >
   잉여들이 모여서 진행하는 해커톤입니다.
   어디까지 가나 해 봅시다.
 baseurl: ""
 url: "https://yyt.life"
 # twitter_username: yingyeothon
-github_username:  yingyeothon
+github_username: yingyeothon
 
 # Build settings
 markdown: kramdown
 
-exclude: ['Gemfile.lock', 'Gemfile', 'sync.sh']
+exclude: ["Gemfile.lock", "Gemfile", "README.md", "sync.sh"]
