@@ -2,6 +2,7 @@
 
 SYNC_LOG="$(mktemp)"
 TARGET_PATHS_LOG="$(mktemp)"
+BUCKET_NAME="yyt-life-website"
 
 jekyll build --future
 if [ $? -ne 0 ]; then
@@ -9,7 +10,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-aws s3 sync _site/ s3://yyt.life \
+aws s3 sync _site/ "s3://${BUCKET_NAME}" \
   | grep "upload:" \
   | tee "${SYNC_LOG}"
 if [ $? -ne 0 ]; then
