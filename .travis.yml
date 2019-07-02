@@ -11,6 +11,8 @@ script:
         -e AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} \
         -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
         -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+        -e TRAVIS_BRANCH=${TRAVIS_BRANCH} \
+        -e TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST} \
         -v ${PWD}:/opt \
       lacti/jekyll-aws \
       /bin/bash -c "cd /opt; /bin/bash /opt/sync.sh"
