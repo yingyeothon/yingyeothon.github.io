@@ -14,7 +14,7 @@ echo "Travis env:"
 echo "  - TRAVIS_BRANCH: ${TRAVIS_BRANCH}"
 echo "  - TRAVIS_PULL_REQUEST: ${TRAVIS_PULL_REQUEST}"
 
-if [[ "${TRAVIS_PULL_REQUEST}" == "true" ]] || [[ "${TRAVIS_BRANCH}" != "master" ]]; then
+if [[ "${TRAVIS_PULL_REQUEST}" != "false" ]] || [[ "${TRAVIS_BRANCH}" != "master" ]]; then
   echo "Deploy 'master' branch only."
   exit 0
 fi
