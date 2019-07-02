@@ -10,6 +10,11 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+if [ ! -z "${TRAVIS_PULL_REQUEST}" ]; then
+  echo "This is pull request, so don't update website, now."
+  exit 0
+fi
+
 aws s3 sync _site/ "s3://${BUCKET_NAME}" \
   | grep "upload:" \
   | tee "${SYNC_LOG}"
