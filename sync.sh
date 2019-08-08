@@ -19,7 +19,7 @@ if [[ "${TRAVIS_PULL_REQUEST}" != "false" ]] || [[ "${TRAVIS_BRANCH}" != "master
   exit 0
 fi
 
-aws s3 sync _site/ "s3://${BUCKET_NAME}" \
+aws s3 sync --size-only --delete _site/ "s3://${BUCKET_NAME}" \
   | grep "upload:" \
   | tee "${SYNC_LOG}"
 if [ $? -ne 0 ]; then
@@ -32,12 +32,9 @@ cat "${SYNC_LOG}" \
   | cut -d"/" -f4- \
   | sed -e 's/^/\//' \
   | sort -u \
-  | egrep "(.html|.css)" \
+  | egrep "(.html|.css|.png|.jpg|.svg|.webp|.webm|.js)" \
   | tee "${TARGET_PATHS_LOG}"
 TARGET_PATHS="$(cat "${TARGET_PATHS_LOG}")"
-
-# Do not invalidate image caches because they would not be changed in almost cases.
-# | egrep "(.html|.css|.jpg|.png|.js)" \
 
 DISTRIBUTION_ID="$(aws cloudfront list-distributions \
   | jq -r '.DistributionList.Items[] | select(.Aliases.Items[0]=="www.yyt.life") | .Id' \
