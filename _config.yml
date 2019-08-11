@@ -12,4 +12,13 @@ github_username: yingyeothon
 # Build settings
 markdown: kramdown
 
-exclude: ["Gemfile.lock", "Gemfile", "README.md", "sync.sh"]
+exclude:
+  [
+    "Gemfile.lock",
+    "Gemfile",
+    "README.md",
+    "sync.sh",
+    "compress-agif.sh",
+    ".markdownlint.json",
+    "*.log",
+  ]
