@@ -19,8 +19,7 @@ if [[ "${TRAVIS_PULL_REQUEST}" != "false" ]] || [[ "${TRAVIS_BRANCH}" != "master
   exit 0
 fi
 
-aws s3 sync --size-only --delete _site/ "s3://${BUCKET_NAME}" \
-  | grep "upload:" \
+aws s3 sync --size-only --delete --no-progress _site/ "s3://${BUCKET_NAME}" \
   | tee "${SYNC_LOG}"
 if [ $? -ne 0 ]; then
   echo "Sync up is failed."
@@ -28,11 +27,13 @@ if [ $? -ne 0 ]; then
 fi
 
 cat "${SYNC_LOG}" \
-  | cut -d" " -f22 \
+  | rev \
+  | cut -d" " -f1 \
+  | rev \
   | cut -d"/" -f4- \
+  | grep -v '^$' \
   | sed -e 's/^/\//' \
   | sort -u \
-  | egrep "(.html|.css|.png|.jpg|.svg|.webp|.webm|.js)" \
   | tee "${TARGET_PATHS_LOG}"
 TARGET_PATHS="$(cat "${TARGET_PATHS_LOG}")"
 
