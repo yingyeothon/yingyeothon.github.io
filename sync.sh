@@ -10,15 +10,6 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo "Travis env:"
-echo "  - TRAVIS_BRANCH: ${TRAVIS_BRANCH}"
-echo "  - TRAVIS_PULL_REQUEST: ${TRAVIS_PULL_REQUEST}"
-
-if [[ "${TRAVIS_PULL_REQUEST}" != "false" ]] || [[ "${TRAVIS_BRANCH}" != "master" ]]; then
-  echo "Deploy 'master' branch only."
-  exit 0
-fi
-
 aws s3 sync --size-only --delete --no-progress _site/ "s3://${BUCKET_NAME}" \
   | tee "${SYNC_LOG}"
 if [ $? -ne 0 ]; then
