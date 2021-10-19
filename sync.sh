@@ -59,7 +59,7 @@ fi
 
 aws cloudfront create-invalidation \
   --distribution-id "${DISTRIBUTION_ID}" \
-  --paths ${TARGET_PATHS} "/"
+  --paths "/*"
 
 if [ $? -ne 0 ]; then
   echo "Cache invalidation is failed."
