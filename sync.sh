@@ -1,7 +1,5 @@
 #!/bin/bash
 
-SYNC_LOG="$(mktemp)"
-TARGET_PATHS_LOG="$(mktemp)"
 BUCKET_NAME="yyt-life-website"
 
 jekyll build --future
@@ -31,23 +29,12 @@ fi
 du -hcs _site
 
 # Upload all things to S3
-aws s3 sync --size-only --delete --no-progress _site/ "s3://${BUCKET_NAME}" \
-  | tee "${SYNC_LOG}"
+aws s3 rm --recursive "s3://${BUCKET_NAME}" && \
+  aws s3 cp --recursive "_site/" "s3://${BUCKET_NAME}"
 if [ $? -ne 0 ]; then
   echo "Sync up is failed."
   exit 1
 fi
-
-cat "${SYNC_LOG}" \
-  | rev \
-  | cut -d" " -f1 \
-  | rev \
-  | cut -d"/" -f4- \
-  | grep -v '^$' \
-  | sed -e 's/^/\//' \
-  | sort -u \
-  | tee "${TARGET_PATHS_LOG}"
-TARGET_PATHS="$(cat "${TARGET_PATHS_LOG}")"
 
 DISTRIBUTION_ID="$(aws cloudfront list-distributions \
   | jq -r '.DistributionList.Items[] | select(.Aliases.Items[0]=="www.yyt.life") | .Id' \
@@ -65,6 +52,4 @@ if [ $? -ne 0 ]; then
   echo "Cache invalidation is failed."
   exit 1
 fi
-
-rm -f "${SYNC_LOG}" "${TARGET_PATHS_LOG}"
 
